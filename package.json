@@ -1,0 +1,28 @@
+{
+  "name": "relientnotify",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/app.js",
+  "scripts": {
+    "dev": "nodemon --exec ts-node services/api/src/server.ts",
+    "build": "tsc",
+    "start": "node services/api/src/server.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "dotenv": "^17.2.4",
+    "express": "^4.22.1",
+    "mongoose": "^9.1.6",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.25",
+    "@types/node": "^25.1.0",
+    "nodemon": "^3.1.11",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  }
+}
