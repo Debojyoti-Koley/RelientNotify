@@ -3,6 +3,7 @@ const router = express.Router();
 import Notification from '../models/Notifications';
 import { notificationValidatorSchema } from '../validator/notificationValidator';
 import { validateRequest } from '../middlewares/validateRequest';
+import { notificationQueue } from "../queues/notification.queue";
 
 
 router.post('/', validateRequest(notificationValidatorSchema), async (req, res) => {
@@ -26,6 +27,9 @@ router.post('/', validateRequest(notificationValidatorSchema), async (req, res) 
             });
         }
         await notification.save();
+        await notificationQueue.add('sendNotification', {
+            notificationId: notification._id,
+        });
         res.status(202).json({
             success: true,
             notificationId: notification._id,
